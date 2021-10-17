@@ -2,21 +2,25 @@
   <div>
     <div class="book-box">
       <div class="book-image-and-info">
-        <div class="book-image">
-          <img
-            :src="require('@/assets/images/books/' + book.imageFile)"
-            :alt="book.title"
-          />
-          <div class="read-now-button">Read Now</div>
-        </div>
+        <img
+          class="book-image"
+          :src="require('@/assets/images/books/' + bookImageFileName(book))"
+          :alt="book.title"
+          style="height: 200px; width: 155px"
+        />
+
         <div class="book-info">
           <div class="book-title">{{ book.title }}</div>
           <div class="book-author">{{ book.author }}</div>
           <div class="book-price">${{ (book.price / 100).toFixed(2) }}</div>
         </div>
       </div>
-      <button class="cart-button">Add to Cart</button>
-      <button class="buy-now-button">Buy Now</button>
+      <router-link to="./">
+        <button class="cart-button">Add to Cart</button>
+      </router-link>
+      <router-link to="./" v-if="book.isPublic">
+        <button class="buy-now-button">Buy Now</button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -28,6 +32,13 @@ export default {
     book: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    bookImageFileName: function (book) {
+      let name = book.title.toLowerCase();
+      name = name.replace(/ /g, "-");
+      return `${name}.jpg`;
     },
   },
 };

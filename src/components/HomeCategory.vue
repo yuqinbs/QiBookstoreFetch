@@ -74,7 +74,7 @@
       <div class="trending-books">
         <a>
           <img
-            src="@/assets/images/books/hope.jpg"
+            src="@/assets/images/books/one-hundred-reasons-to-hope.jpg"
             alt="hope"
             width="155px"
             height="200px"
@@ -83,7 +83,7 @@
         </a>
         <a>
           <img
-            src="@/assets/images/books/panda.jpg"
+            src="@/assets/images/books/big-panda-and-tiny-dragon.jpg"
             alt="panda"
             width="155px"
             height="200px"
@@ -92,7 +92,7 @@
         </a>
         <a>
           <img
-            src="@/assets/images/books/primrose.jpg"
+            src="@/assets/images/books/the-primrose-railway-children.jpg"
             alt="primrose"
             width="155px"
             height="200px"
@@ -101,7 +101,7 @@
         </a>
         <a>
           <img
-            src="@/assets/images/books/record.jpg"
+            src="@/assets/images/books/guinness-world-records-2022.jpg"
             alt="All Books"
             width="155px"
             height="200px"

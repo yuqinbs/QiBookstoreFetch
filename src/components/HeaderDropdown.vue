@@ -19,19 +19,16 @@
         ></path>
       </svg>
       <ul>
-        <router-link to="../category/all" tag="li">
-          <p>View All Books</p>
-        </router-link>
-        <router-link to="../category/children" tag="li">
+        <router-link to="../category/Children" tag="li">
           <p>Children's Books</p>
         </router-link>
-        <router-link to="../category/food" tag="li">
+        <router-link to="../category/Food" tag="li">
           <p>Food & Drink Books</p>
         </router-link>
-        <router-link to="../category/art" tag="li">
+        <router-link to="../category/Art" tag="li">
           <p>Art & Craft Books</p>
         </router-link>
-        <router-link to="../category/education" tag="li">
+        <router-link to="../category/Education" tag="li">
           <p>Education Books</p>
         </router-link>
       </ul>
