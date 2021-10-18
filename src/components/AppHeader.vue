@@ -1,30 +1,7 @@
 <template>
   <header class="container">
     <header-dropdown-menu></header-dropdown-menu>
-    <section class="search-bar1">
-      <form action="category.html">
-        <input type="text" placeholder="I'm searching for ..." />
-        <button type="submit">
-          <svg
-            t="1632080888184"
-            class="icon"
-            viewBox="0 0 1024 1024"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            p-id="1368"
-            width="40"
-            height="40"
-          >
-            <path
-              d="M959.744 870.592l-199.808-199.808a382.08 382.08 0 0 0 71.552-222.72c0-212.032-171.968-384-384-384S64 235.968 64 448s171.456 384 383.488 384a381.952 381.952 0 0 0 222.72-71.552l199.808 199.808 89.728-89.664zM447.488 704a256 256 0 1 1 0-512 256 256 0 0 1 0 512z"
-              p-id="1369"
-              fill="#003087"
-            ></path>
-          </svg>
-        </button>
-      </form>
-    </section>
-    <section class="logo">
+    <div class="logo">
       <router-link to="/">
         <svg
           t="1632092876125"
@@ -88,13 +65,13 @@
           ></path>
         </svg>
       </router-link>
-    </section>
-    <section class="title">
+    </div>
+    <div class="title">
       <router-link style="text-decoration: none; color: inherit" to="/">
         <h1 class="text-title">BookBook</h1>
       </router-link>
-    </section>
-    <section class="myaccount">
+    </div>
+    <div class="myaccount">
       <router-link to="/">
         <svg
           t="1632081321673"
@@ -113,8 +90,8 @@
           ></path>
         </svg>
       </router-link>
-    </section>
-    <section class="cart">
+    </div>
+    <div class="cart">
       <router-link to="/">
         <svg
           t="1632082458526"
@@ -133,8 +110,8 @@
           ></path>
         </svg>
       </router-link>
-    </section>
-    <section class="cartnumber">
+    </div>
+    <div class="cartnumber">
       <router-link to="/">
         <svg
           t="1632082545787"
@@ -153,7 +130,15 @@
           ></path>
         </svg>
       </router-link>
-    </section>
+    </div>
+    <div class="search-bar12">
+      <form class="search-bar1">
+        <input type="search" name="search" pattern=".*\S.*" required />
+        <button class="search-btn" type="submit">
+          <span>Search</span>
+        </button>
+      </form>
+    </div>
   </header>
 </template>
 
@@ -176,22 +161,147 @@ header {
   gap: 1em;
 }
 
+.search-bar12 {
+  display: flex;
+  margin-top: -0.5%;
+}
+
 .search-bar1 {
-  background-color: #f4f4f4;
   display: flex;
 }
 
+.search-bar1 input,
+.search-btn,
+.search-btn:before,
+.search-btn:after {
+  transition: all 0.25s ease-out;
+}
+.search-bar1 input,
+.search-btn {
+  width: 3em;
+  height: 3em;
+}
+.search-bar1 input:invalid:not(:focus),
+.search-btn {
+  cursor: pointer;
+}
+.search-bar1,
+.search-bar1 input:focus,
+.search-bar1 input:valid {
+  width: 100%;
+}
+.search-bar1 input:focus,
+.search-bar1 input:not(:focus) + .search-btn:focus {
+  outline: transparent;
+}
+.search-bar1 {
+  margin: auto;
+  padding: 1.5em;
+  justify-content: center;
+  max-width: 30em;
+}
 .search-bar1 input {
-  height: auto;
-  border: 10px solid #f4f4f4;
-  background-color: #f4f4f4;
-  color: #808080;
+  background: transparent;
+  border-radius: 1.5em;
+  box-shadow: 0 0 0 0.4em dodgerblue inset;
+  padding: 0.75em;
+  transform: translate(0.5em, 0.5em) scale(0.5);
+  transform-origin: 100% 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.search-bar1 input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+.search-bar1 input:focus,
+.search-bar1 input:valid {
+  background: #fff;
+  border-radius: 0.375em 0 0 0.375em;
+  box-shadow: 0 0 0 0.1em #d9d9d9 inset;
+  transform: scale(1);
+}
+.search-btn {
+  background: dodgerblue;
+  border-radius: 7.5px;
+  padding: 0.75em;
+  transform: translate(0.25em, 0.25em) rotate(45deg) scale(0.25, 0.125);
+  transform-origin: 0 50%;
+}
+.search-btn:before,
+.search-btn:after {
+  content: "";
+
+  opacity: 0;
+  position: absolute;
+}
+.search-btn:before {
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.2em #f1f1f1 inset;
+  top: 0.75em;
+  left: 0.75em;
+  width: 1.2em;
+  height: 1.2em;
+}
+.search-btn:after {
+  background: #f1f1f1;
+  border-radius: 0 0.25em 0.25em 0;
+  top: 51%;
+  left: 51%;
+  width: 0.75em;
+  height: 0.25em;
+  transform: translate(0.2em, 0) rotate(45deg);
+  transform-origin: 0 50%;
+}
+.search-btn span {
+  display: inline-block;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
 }
 
-.search-bar1 form button {
-  cursor: pointer;
-  border: 2px solid #f4f4f4;
-  background-color: #f4f4f4;
+/* Active state */
+.search-bar1 input:focus + .search-btn,
+.search-bar1 input:valid + .search-btn {
+  background: #008cff;
+  border-radius: 0 0.375em 0.375em 0;
+  transform: scale(1);
+}
+.search-bar1 input:focus + .search-btn:before,
+.search-bar1 input:focus + .search-btn:after,
+.search-bar1 input:valid + .search-btn:before,
+.search-bar1 input:valid + .search-btn:after {
+  opacity: 1;
+}
+.search-bar1 input:focus + .search-btn:hover,
+.search-bar1 input:valid + .search-btn:hover,
+.search-bar1 input:valid:not(:focus) + .search-btn:focus {
+  background: #0c48db;
+}
+.search-bar1 input:focus + .search-btn:active,
+.search-bar1 input:valid + .search-btn:active {
+  transform: translateY(1px);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  body,
+  input {
+    color: #f1f1f1;
+  }
+  body {
+    background: dodgerblue;
+  }
+  .search-bar1 input {
+    box-shadow: 0 0 0 0.4em #f1f1f1 inset;
+  }
+  .search-bar1 input:focus,
+  .search-bar1 input:valid {
+    background: #3d3d3d;
+    box-shadow: 0 0 0 0.1em #3d3d3d inset;
+  }
+  .search-btn {
+    background: #f1f1f1;
+  }
 }
 
 .text-title {

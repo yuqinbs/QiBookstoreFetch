@@ -1,72 +1,13 @@
 <template>
   <div class="home-page">
-    <section class="category-images container">
-      <div class="category-image-items">
-        <router-link
-          style="text-decoration: none; color: inherit"
-          to="../category/all"
-        >
-          <img
-            src="@/assets/images/categories/all.jpg"
-            alt="All Books"
-            width="180px"
-            height="180px"
-          />
-          <div>All Books</div>
-        </router-link>
-        <router-link
-          style="text-decoration: none; color: inherit"
-          to="../category/children"
-        >
-          <img
-            src="@/assets/images/categories/children.jpg"
-            alt="Children's Books"
-            width="180px"
-            height="180px"
-          />
-          <div>Children's</div>
-        </router-link>
-        <router-link
-          style="text-decoration: none; color: inherit"
-          to="../category/food"
-        >
-          <img
-            src="@/assets/images/categories/food.jpg"
-            alt="Food & Drink Books"
-            width="180px"
-            height="180px"
-          />
-          <div>Food & Drink</div>
-        </router-link>
-        <router-link
-          style="text-decoration: none; color: inherit"
-          to="../category/art"
-        >
-          <img
-            src="@/assets/images/categories/art.jpg"
-            alt="Art & Craft Books"
-            width="180px"
-            height="180px"
-          />
-          <div>Art & Craft</div>
-        </router-link>
-        <router-link
-          style="text-decoration: none; color: inherit"
-          to="../category/education"
-        >
-          <img
-            src="@/assets/images/categories/education.jpg"
-            alt="Education Books"
-            width="180px"
-            height="180px"
-          />
-          <div>Education</div>
-        </router-link>
-      </div>
-    </section>
-    <div class="welcome">
-      <h1>Welcome to BookBook</h1>
+    <div class="banner">
+      <div class="border"></div>
+      <h2>Welcome To BookBook</h2>
+
+      <router-link to="/category/Children" tag="button">Shop Now!</router-link>
+      <div class="border border-bottom"></div>
     </div>
+
     <div class="trending">
       <h1>Trending</h1>
     </div>
@@ -120,11 +61,53 @@ export default {
 </script>
 
 <style scoped>
-.category-image-items {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1em;
+.banner {
+  padding: 6em 0 8em 0;
+  text-align: center;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+}
+
+.border {
+  width: 60%;
+  margin: 0 auto;
+  height: 47px;
+  border: 2px solid #fff;
+  border-bottom: 0;
+}
+.banner h2 {
+  margin: 0;
+  font-size: 3em;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  padding: 0.5em 0 0 0;
+}
+
+.banner button {
+  font-size: 2em;
+  background-color: pink;
+  margin: 1em 0 0 0;
+  line-height: 2em;
+  padding: 0.5em;
+  border: solid dodgerblue 2px;
+  border-radius: 7.5px;
+}
+
+.banner button:hover {
+  cursor: pointer;
+  font-weight: bold;
+  opacity: 1;
+  text-decoration: none;
+}
+
+.border-bottom {
+  border-top: 0;
+  border-bottom: 2px solid #fff !important;
 }
 
 .category-image-items a {
@@ -140,17 +123,11 @@ export default {
   margin-bottom: -2em;
 }
 
-.welcome {
-  font-size: 30px;
-  text-align: center;
-  margin-bottom: 10px;
-  padding: 10px;
-}
-
 .trending {
   font-family: "Courier New", Courier, monospace;
-
-  margin-left: 1.5%;
+  padding-bottom: 2%;
+  padding-top: 2%;
+  text-align: center;
 }
 
 .trending-books {
@@ -180,5 +157,19 @@ export default {
   margin-top: 10px;
   border: solid dodgerblue 2px;
   border-radius: 7.5px;
+}
+
+.trending-books button:hover {
+  cursor: pointer;
+  font-weight: bold;
+  opacity: 1;
+  text-decoration: none;
+}
+
+.buy-now:hover {
+  cursor: pointer;
+  font-weight: bold;
+  opacity: 1;
+  text-decoration: none;
 }
 </style>

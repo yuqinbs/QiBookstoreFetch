@@ -8,7 +8,9 @@
           :alt="book.title"
           style="height: 200px; width: 155px"
         />
-
+        <router-link to="./" v-if="book.isFeatured">
+          <div class="read-now-button">Read Now</div>
+        </router-link>
         <div class="book-info">
           <div class="book-title">{{ book.title }}</div>
           <div class="book-author">{{ book.author }}</div>
@@ -103,6 +105,8 @@ export default {
 .cart-button:hover {
   cursor: pointer;
   opacity: 1;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .book-info {
@@ -123,8 +127,8 @@ export default {
 .cart-button {
   background-color: dodgerblue;
   color: white;
-  padding: 0.25em 1em;
-
+  padding: auto;
+  text-decoration: none;
   border: solid dodgerblue 2px;
   border-radius: 7.5px;
 }
@@ -132,7 +136,7 @@ export default {
 .buy-now-button {
   background-color: gold;
   color: black;
-  padding: 0.25em 1em;
+  padding: auto;
 
   border: solid dodgerblue 2px;
   border-radius: 7.5px;

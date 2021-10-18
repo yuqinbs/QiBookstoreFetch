@@ -1,5 +1,5 @@
 <template>
-  <div class="home-categroies">
+  <div class="home-categories">
     <li>
       <p>CATEGORIES</p>
       <svg
@@ -19,31 +19,58 @@
         ></path>
       </svg>
       <ul>
-        <router-link to="../category/Children" tag="li">
-          <p>Children's Books</p>
-        </router-link>
-        <router-link to="../category/Food" tag="li">
-          <p>Food & Drink Books</p>
-        </router-link>
-        <router-link to="../category/Art" tag="li">
-          <p>Art & Craft Books</p>
-        </router-link>
-        <router-link to="../category/Education" tag="li">
-          <p>Education Books</p>
-        </router-link>
+        <template v-for="category in categories">
+          <li
+            v-if="category.name === $route.params.name"
+            :key="category.categoryID"
+            class="unselected-category"
+          >
+            <p>{{ category.name }}</p>
+          </li>
+          <li v-else :key="category.categoryID" class="unselected-category">
+            <router-link :to="'/category/' + category.name">
+              <p>{{ category.name }}</p>
+            </router-link>
+          </li>
+        </template>
       </ul>
     </li>
   </div>
 </template>
 
 <script>
+import ApiService from "@/services/ApiService";
+
 export default {
   name: "HeaderDropdownMenu",
+  data: function () {
+    return {
+      categories: [],
+    };
+  },
+  created: function () {
+    console.log("Begin fetchCategories...");
+    this.fetchCategories();
+    console.log("End fetchCategories...");
+  },
+  methods: {
+    fetchCategories() {
+      const vm = this;
+      ApiService.fetchCategories()
+        .then((data) => {
+          console.log("Data: " + data);
+          vm.categories = data;
+        })
+        .catch((reason) => {
+          console.log("Error: " + reason);
+        });
+    },
+  },
 };
 </script>
 
 <style scoped>
-.home-categroies {
+.home-categories {
   display: contents;
   background: #ffffff;
   border-radius: 5px;
@@ -52,24 +79,27 @@ export default {
 
   width: 20%;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.home-categroies svg {
+.home-categories svg {
   position: relative;
   left: 27px;
 }
 
-.home-categroies li {
+.home-categories li {
   list-style: none;
+  text-decoration: none;
 }
 
-.home-categroies li:hover > ul {
+.home-categories li:hover > ul {
   color: #000000;
   box-shadow: 0 0 10px #ccc;
   display: block;
+  text-decoration: none;
 }
 
-.home-categroies li ul {
+.home-categories li ul {
   position: absolute;
   display: none;
   background: #003087;
@@ -80,28 +110,30 @@ export default {
   padding: 0;
   color: #ffffff;
   font-size: 0.9rem;
+  text-decoration: none;
 }
 
-.home-categroies li ul li {
+.unselected-category {
   text-decoration: none;
   color: #ffffff;
 }
 
-.home-categroies li ul li:hover {
+.unselected-category:hover {
   text-decoration: none;
   color: #000000;
 }
 
-.home-categroies li ul li p {
+.unselected-category p {
   line-height: 30px;
   padding-left: 10%;
   box-sizing: border-box;
   width: 100%;
+  text-decoration: none;
 }
 
-.home-categroies li ul li p:hover {
+.unselected-category p:hover {
   background: #ffffff;
-
+  text-decoration: none;
   cursor: pointer;
 }
 </style>
